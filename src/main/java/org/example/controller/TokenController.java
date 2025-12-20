@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class TokenController {
     @Autowired private AuthenticationManager authenticationManager;
@@ -30,11 +32,12 @@ public class TokenController {
             return new ResponseEntity<>(JwtResponseDTO.builder().accessToken(jwtService.generateToken(authRequestDTO.getUsername())).token(refreshToken.getToken()).build(), HttpStatus.OK
             );
         }
-            return new ResponseEntity<>("Error in User Service", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(Map.of("message", "Error in User Service"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @PostMapping("/auth/v1/refreshToken")
     public JwtResponseDTO refreshToken(@RequestBody RefreshTokenDTO refreshTokenDTO){
-        return refreshTokenService.findBytoken(refreshTokenDTO.getToken())
+        return refreshTokenService.findByToken(refreshTokenDTO.getToken())
                 .map(refreshTokenService::verifyExpiration)
                 .map(RefreshToken::getUserInfo)
                 .map(userInfo -> {
