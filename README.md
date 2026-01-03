@@ -3,7 +3,7 @@
 The **Auth Service** is a centralized authentication and authorization microservice responsible for handling **user authentication**, **token management**, and **security event publishing**.  
 It acts as the **single source of truth for user identity** in the system and communicates with other microservices using an **event-driven architecture**.
 
-This service is built using **:contentReference[oaicite:0]{index=0}**, **:contentReference[oaicite:1]{index=1}**, and **:contentReference[oaicite:2]{index=2}**.
+This service is built using **SpringBoot**, **Spring Security**, and **Apache Kafka**.
 
 ---
 
@@ -46,11 +46,11 @@ This service **does not handle business logic** such as expenses, budgets, or an
 ## 🧩 Tech Stack
 
 - **Language**: Java  
-- **Framework**: :contentReference[oaicite:3]{index=3}  
-- **Security**: :contentReference[oaicite:4]{index=4} + JWT  
-- **Messaging**: :contentReference[oaicite:5]{index=5}  
-- **Database**: MySQL / PostgreSQL  
-- **Build Tool**: Maven / Gradle  
+- **Framework**: SpringBoot  
+- **Security**: Spring Security + JWT  
+- **Messaging**: Apache Kafka  
+- **Database**: MySQL  
+- **Build Tool**: Gradle  
 
 
 
