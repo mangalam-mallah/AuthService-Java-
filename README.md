@@ -29,9 +29,6 @@ This service is responsible for:
 - Enforcing security policies
 - Publishing authentication-related events
 
-This service **does not handle business logic** such as expenses, budgets, or analytics.
-
----
 
 ## 🔁 Authentication Flow
 
@@ -41,7 +38,30 @@ This service **does not handle business logic** such as expenses, budgets, or an
 4. A security event is published to Kafka
 5. Other services consume the event
 
----
+# Kafka Integration(Producer): Auth Service -> User Service
+## 1. Overview
+
+When a user **registers or updates profile details**, the **Auth Service** publishes a **User Info event** to Kafka.  
+The **User Service** listens to this event and **creates or updates the user record** in its own database.
+
+This ensures:
+- Loose coupling between services
+- Asynchronous communication
+- Independent scaling of services
+- 
+## 2. High-Level Event Flow
+
+Auth Service
+|
+| (UserInfoEvent)
+v
+Kafka Topic
+|
+v
+User Service
+|
+v
+User Database
 
 ## 🧩 Tech Stack
 
