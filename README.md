@@ -51,17 +51,8 @@ This ensures:
 - 
 ## 2. High-Level Event Flow
 
-Auth Service
-|
-| (UserInfoEvent)
-v
-Kafka Topic
-|
-v
-User Service
-|
-v
-User Database
+Auth Service(UserInfoEvent) ---> Kafka Topic ---> User Service ---> User Database
+
 
 ## 🧩 Tech Stack
 
@@ -70,7 +61,8 @@ User Database
 - **Security**: Spring Security + JWT  
 - **Messaging**: Apache Kafka  
 - **Database**: MySQL  
-- **Build Tool**: Gradle  
+- **Build Tool**: Gradle
+- **Containerization**: Docker  
 
 
 
